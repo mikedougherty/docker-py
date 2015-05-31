@@ -172,9 +172,7 @@ def convert_volume_binds(binds):
     result = []
     for k, v in binds.items():
         if isinstance(v, dict):
-            result.append('{0}:{1}:{2}'.format(
-                k, v['bind'], 'ro' if v.get('ro', False) else 'rw'
-            ))
+            result.append('{0}:{1}:{2}'.format(k, v['bind'], v['mode']))
         else:
             result.append('{0}:{1}:rw'.format(k, v))
     return result
